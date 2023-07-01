@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WriterReader {
@@ -12,8 +13,12 @@ public class WriterReader {
     String data;
     SiteFoco site;
     Scanner myReader;
+    File senhasFolder;
+    File[] listFilesFolder;
+    ArrayList<SiteFoco> sites;
+    SiteFoco siteSearch;
 
-    public void createFile(String site, String email) {
+    public File createFile(String site, String email) {
         try{
             file = new File("T:\\Projetos\\Pessoais\\GerenciadorSenha\\Senhas\\" + site + email + ".txt");
             if(file.createNewFile()){
@@ -22,10 +27,12 @@ public class WriterReader {
             else{
                 System.out.println("Arquivo já existe.");
             }
+            return file;
         }
         catch(IOException e){
             System.out.println("An error occurred.");
             e.printStackTrace();
+            return null;
         }
     }
 
@@ -62,5 +69,24 @@ public class WriterReader {
         }
     }
 
-    public 
+    public ArrayList<SiteFoco> searchFile(String site){
+        senhasFolder = new File("T:\\Projetos\\Pessoais\\GerenciadorSenha\\Senhas");
+        listFilesFolder = senhasFolder.listFiles();
+        for (File file : listFilesFolder) {
+            if (file.isFile()) {
+                if(file.getName().contains(site)){
+                    siteSearch = readerFile(file);
+                    if (siteSearch != null){
+                        sites.add(siteSearch);
+                    }
+                }
+            }
+        }
+        if(sites != null){
+            return sites;
+        }
+        else{
+            return null;
+        }
+    }
 }
