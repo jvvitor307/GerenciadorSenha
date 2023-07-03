@@ -24,10 +24,10 @@ public class Aplicativo {
             }
             else{
                 for (SiteFoco site : sites) {
-                    System.out.println(site.getSiteName());
-                    System.out.println(site.getUser());
-                    System.out.println(site.getEmail());
-                    System.out.println(site.getPassword());
+                    System.out.println("nome do site/App: " + site.getSiteName());
+                    System.out.println("nome do usuario: " + site.getUser());
+                    System.out.println("Email: " + site.getEmail());
+                    System.out.println("Senha: " + site.getPassword());
                 }
             }
         }

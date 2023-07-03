@@ -41,7 +41,7 @@ public class Display {
             System.out.println("Digite o tamanho da senha: ");
             lenghtString = input.nextInt();
         }catch(Exception e){
-            System.out.println("Digite o tamanho da senha:");
+            System.out.println("Digite o tamanho da senha (tamanho minimo --> 4):");
             displayAdicionar();
         }
         
