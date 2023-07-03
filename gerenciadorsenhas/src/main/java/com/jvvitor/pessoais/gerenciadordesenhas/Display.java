@@ -50,12 +50,7 @@ public class Display {
         return siteFoco;
         
     }
-    public SiteFoco ListSite(){
-        System.out.println("Digite o nome do site: ");
-        site = input.nextLine();
-        
-        return siteFoco;
-    }
+    
 
 
     

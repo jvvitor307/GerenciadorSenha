@@ -13,14 +13,16 @@ public class WriterReader {
     String data;
     SiteFoco site;
     Scanner myReader;
-    File senhasFolder;
-    File[] listFilesFolder;
-    ArrayList<SiteFoco> sites;
+    File senhasFolder = new File("T:\\Projetos\\Pessoais\\GerenciadorSenha\\Senhas");
+    File[] listFilesFolder = senhasFolder.listFiles();
+    ArrayList<SiteFoco> sites = new ArrayList<SiteFoco>();
     SiteFoco siteSearch;
+    
+    
 
-    public File createFile(String site, String email) {
+    public File createFile(SiteFoco site) {
         try{
-            file = new File("T:\\Projetos\\Pessoais\\GerenciadorSenha\\Senhas\\" + site + email + ".txt");
+            file = new File("T:\\Projetos\\Pessoais\\GerenciadorSenha\\Senhas\\" + site.getSiteName() + site.getEmail() + ".txt");
             if(file.createNewFile()){
                 System.out.println("Arquivo criado: " + file.getName());
             }
@@ -36,21 +38,19 @@ public class WriterReader {
         }
     }
 
-    public File writerFile(File file, String site, String user, String password, String email){
+    public void writerFile(File file, SiteFoco site){
         try{
             FileWriter writer = new FileWriter(file);
-            writer.write(site + "\n");
-            writer.write(user + "\n");
-            writer.write(email + "\n");
-            writer.write(password + "\n");
+            writer.write(site.getSiteName() + "\n");
+            writer.write(site.getUser() + "\n");
+            writer.write(site.getEmail() + "\n");
+            writer.write(site.getPassword() + "\n");
             writer.close();
             System.out.println("Arquivo escrito com sucesso.");
-            return file;
         }
         catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
-            return null;
         }
     }
 
@@ -70,8 +70,6 @@ public class WriterReader {
     }
 
     public ArrayList<SiteFoco> searchFile(String site){
-        senhasFolder = new File("T:\\Projetos\\Pessoais\\GerenciadorSenha\\Senhas");
-        listFilesFolder = senhasFolder.listFiles();
         for (File file : listFilesFolder) {
             if (file.isFile()) {
                 if(file.getName().contains(site)){
@@ -87,6 +85,14 @@ public class WriterReader {
         }
         else{
             return null;
+        }
+    }
+    public void ListSite(){
+        listFilesFolder = senhasFolder.listFiles();
+        for (File file : listFilesFolder) {
+            if (file.isFile()) {
+                System.out.println(file.getName());
+            }
         }
     }
 }

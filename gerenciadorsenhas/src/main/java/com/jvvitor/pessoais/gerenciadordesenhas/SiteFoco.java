@@ -6,7 +6,6 @@ public class SiteFoco {
     String email;
     String SiteName;
 
-
     public SiteFoco(String site, String user, String email) {
         this.SiteName = site;
         this.user = user;
@@ -37,8 +36,4 @@ public class SiteFoco {
     public void setSiteName(String siteName) {
         SiteName = siteName;
     }
-    
-    
-
-    
 }
