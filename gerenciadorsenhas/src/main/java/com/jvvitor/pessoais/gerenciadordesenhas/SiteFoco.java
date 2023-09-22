@@ -36,4 +36,5 @@ public class SiteFoco {
     public void setSiteName(String siteName) {
         SiteName = siteName;
     }
+    
 }

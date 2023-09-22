@@ -18,7 +18,7 @@ public class GeradorSenha {
     public String generatePassword(int length){
         if(length < 4){
             length = 4;
-            System.out.println("A senha é muito curta, define um tamanho de 4 caracteres");
+            System.out.println("A senha é muito curta, defini um tamanho de 4 caracteres");
         }
         useLettersMaiusculus = false;
         useLettersMinusculus = false;
